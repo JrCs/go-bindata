@@ -13,7 +13,7 @@ output being generated.
 
 To install the library and command line program, use the following:
 
-	go get -u github.com/jteeuwen/go-bindata/...
+	go get -u github.com/JrCs/go-bindata/...
 
 
 ### Usage
@@ -42,14 +42,14 @@ Multiple input directories can be specified if necessary.
 	$ go-bindata dir1/... /path/to/dir2/... dir3
 
 
-The following paragraphs detail some of the command line options which can be 
+The following paragraphs detail some of the command line options which can be
 supplied to `go-bindata`. Refer to the `testdata/out` directory for various
 output examples from the assets in `testdata/in`. Each example uses different
 command line options.
 
 To ignore files, pass in regexes using -ignore, for example:
 
-    $ go-bindata -ignore=\\.gitignore data/...
+	$ go-bindata -ignore=\\.gitignore data/...
 
 ### Accessing an asset
 
@@ -113,7 +113,7 @@ implementation without dependencies on `reflect` and `unsafe`:
 
 ```go
 func myfile() []byte {
-    return []byte{0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a}
+	return []byte{0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a}
 }
 ```
 
@@ -125,14 +125,14 @@ generating a runtime error.
 var _myfile = "\x89\x50\x4e\x47\x0d\x0a\x1a"
 
 func myfile() []byte {
-    var empty [0]byte
-    sx := (*reflect.StringHeader)(unsafe.Pointer(&_myfile))
-    b := empty[:]
-    bx := (*reflect.SliceHeader)(unsafe.Pointer(&b))
-    bx.Data = sx.Data
-    bx.Len = len(_myfile)
-    bx.Cap = bx.Len
-    return b
+	var empty [0]byte
+	sx := (*reflect.StringHeader)(unsafe.Pointer(&_myfile))
+	b := empty[:]
+	bx := (*reflect.SliceHeader)(unsafe.Pointer(&b))
+	bx.Data = sx.Data
+	bx.Len = len(_myfile)
+	bx.Cap = bx.Len
+	return b
 }
 ```
 
@@ -184,6 +184,5 @@ and must follow the build tags syntax specified by the go tool.
 
 ### Related projects
 
-[go-bindata-assetfs](https://github.com/elazarl/go-bindata-assetfs#readme) - 
+[go-bindata-assetfs](https://github.com/elazarl/go-bindata-assetfs#readme) -
 implements `http.FileSystem` interface. Allows you to serve assets with `net/http`.
-
